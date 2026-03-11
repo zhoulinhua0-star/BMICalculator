@@ -10,19 +10,13 @@ Once GitHub Pages finishes deploying, your public site will be:
 
 - **Website**: `https://zhoulinhua0-star.github.io/BMICalculator/`
 
-### Option A (works everywhere, even offline): open the standalone website file
+### Another Option (works everywhere, even offline): open the standalone website file
 
 Anyone can open this file directly (no server needed):
 
 - `BMICalculator/web/index.html`
 
 You can zip the `web/` folder and share it—any random computer can open `index.html` and use the calculator.
-
-### Option B: run the Java web server (gives you a URL like a “real” site)
-
-After you start the server, open the website here (on the same computer):
-
-- **Website**: [http://localhost:8080/](http://localhost:8080/)
 
 ### Run (Web)
 
