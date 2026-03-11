@@ -4,6 +4,12 @@ A pragmatic BMI calculator that accurately calculates BMI and provides personal 
 
 ## Web version (open in your browser)
 
+### One public link (works anywhere): GitHub Pages
+
+Once GitHub Pages finishes deploying, your public site will be:
+
+- **Website**: `https://zhoulinhua0-star.github.io/BMICalculator/`
+
 ### Option A (works everywhere, even offline): open the standalone website file
 
 Anyone can open this file directly (no server needed):
@@ -50,10 +56,11 @@ To let anyone on the internet access it, you need **one** of these:
 Because the `web/` version is now fully static, you can host it as a permanent public site.
 High-level steps:
 
-- Put this project on GitHub
-- In GitHub: Settings → Pages
-- Set **Deploy from branch**, and choose the `/web` folder as the site root (GitHub Pages)
-- You’ll get a public URL that anyone can open
+- This project is on GitHub
+- In GitHub: **Settings → Pages**
+- Set **Source** to **GitHub Actions** (the repo already includes an auto-deploy workflow)
+- Wait for the deployment to finish
+- Open: `https://zhoulinhua0-star.github.io/BMICalculator/`
 
 ### Optional: change port
 
