@@ -17,6 +17,7 @@ Anyone can open this file directly (no server needed):
 - `BMICalculator/web/index.html`
 
 You can zip the `web/` folder and share it—any random computer can open `index.html` and use the calculator.
+Or you could directly open this via terminal.
 
 ### Run (Web)
 
