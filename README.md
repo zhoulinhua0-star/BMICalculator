@@ -81,5 +81,5 @@ java BMICalculatorWeb --port 8081
 
 ## Console version
 
-This project is a simple console-based BMI (Body Mass Index) calculator written in Java.
+This project is a simple console-based BMI (Body Mass Index) calculator written in Java, providing the basis of the upper web version.
 It allows users to calculate their BMI using either the Metric system (cm, kg) or the US system (inches, lbs).
