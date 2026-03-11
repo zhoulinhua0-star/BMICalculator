@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="header">
+        <h1>BMI Calculator</h1>
+        <p class="sub">
+          BMI measures body fat based on height and weight. Use it to classify underweight, overweight, and obesity.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="bmiForm" class="form" autocomplete="off">
+          <div class="row">
+            <label class="label" for="unit">Unit system</label>
+            <select id="unit" name="unit" class="input">
+              <option value="metric">Metric (cm, kg)</option>
+              <option value="us">US (inches, lbs)</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label class="label" for="height">Height <span id="heightHint" class="hint">(cm)</span></label>
+            <input
+              id="height"
+              name="height"
+              class="input"
+              inputmode="decimal"
+              placeholder="e.g. 175"
+              required
+            />
+          </div>
+
+          <div class="row">
+            <label class="label" for="weight">Weight <span id="weightHint" class="hint">(kg)</span></label>
+            <input
+              id="weight"
+              name="weight"
+              class="input"
+              inputmode="decimal"
+              placeholder="e.g. 72"
+              required
+            />
+          </div>
+
+          <div class="actions">
+            <button id="calcBtn" class="btn" type="submit">Calculate BMI</button>
+            <button id="resetBtn" class="btn btnSecondary" type="button">Reset</button>
+          </div>
+
+          <p id="error" class="error" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card" id="resultCard" hidden>
+        <div class="result">
+          <div class="resultTop">
+            <div>
+              <div class="resultLabel">Your BMI is</div>
+              <div id="bmiValue" class="bmi">—</div>
+            </div>
+            <div class="pill" id="categoryPill">—</div>
+          </div>
+
+          <div class="resultBlock">
+            <div class="resultLabel">Health Advice</div>
+            <pre id="advice" class="advice"></pre>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="footnote">
+          Tip: Use Tab to move quickly between fields. Press Enter to calculate.
+        </p>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
