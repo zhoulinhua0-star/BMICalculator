@@ -4,6 +4,10 @@ A pragmatic BMI calculator that accurately calculates BMI and provides personal 
 
 ## Web version (open in your browser)
 
+## 🌐 Live Website
+
+**👉 [Try BMI Calculator here](https://zhoulinhua0-star.github.io/BMICalculator/)** - No installation required!
+
 ### One public link (works anywhere): GitHub Pages
 
 Once GitHub Pages finishes deploying, your public site will be:
