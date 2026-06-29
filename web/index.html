@@ -4,83 +4,126 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>BMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <nav class="nav">
+      <div class="navInner">
+        <div class="navBrand">BMI Calculator</div>
+        <span class="navTag">Health Tool</span>
+      </div>
+    </nav>
+
     <main class="wrap">
-      <header class="header">
-        <h1>BMI Calculator</h1>
-        <p class="sub">
-          BMI measures body fat based on height and weight. Use it to classify underweight, overweight, and obesity.
+
+      <!-- Hero -->
+      <section class="hero reveal">
+        <div class="heroBadge">
+          <span class="badgeDot"></span>Free · No sign-up required
+        </div>
+        <h1 class="heroTitle">Know Your BMI<br />In Seconds</h1>
+        <p class="heroSub">
+          Enter your height and weight to instantly calculate your Body Mass Index,
+          understand your health category, and get personalised guidance.
         </p>
-      </header>
+      </section>
 
-      <section class="card">
+      <!-- Calculator form -->
+      <section class="card reveal" id="formCard">
         <form id="bmiForm" class="form" autocomplete="off">
-          <div class="row">
-            <label class="label" for="unit">Unit system</label>
-            <select id="unit" name="unit" class="input">
-              <option value="metric">Metric (cm, kg)</option>
-              <option value="us">US (inches, lbs)</option>
-            </select>
+
+          <div class="formRow">
+            <div class="formLabel">Unit system</div>
+            <div class="segmented" id="segmented">
+              <button type="button" class="seg active" data-val="metric">Metric (cm, kg)</button>
+              <button type="button" class="seg" data-val="us">US (in, lbs)</button>
+            </div>
+            <input type="hidden" id="unit" value="metric" />
           </div>
 
-          <div class="row">
-            <label class="label" for="height">Height <span id="heightHint" class="hint">(cm)</span></label>
-            <input
-              id="height"
-              name="height"
-              class="input"
-              inputmode="decimal"
-              placeholder="e.g. 175"
-              required
-            />
-          </div>
-
-          <div class="row">
-            <label class="label" for="weight">Weight <span id="weightHint" class="hint">(kg)</span></label>
-            <input
-              id="weight"
-              name="weight"
-              class="input"
-              inputmode="decimal"
-              placeholder="e.g. 72"
-              required
-            />
-          </div>
-
-          <div class="actions">
-            <button id="calcBtn" class="btn" type="submit">Calculate BMI</button>
-            <button id="resetBtn" class="btn btnSecondary" type="button">Reset</button>
+          <div class="inputRow">
+            <div class="inputGroup">
+              <label class="formLabel" for="height">
+                Height <span class="hint" id="heightHint">(cm)</span>
+              </label>
+              <input id="height" class="input" inputmode="decimal" placeholder="e.g. 175" required />
+            </div>
+            <div class="inputGroup">
+              <label class="formLabel" for="weight">
+                Weight <span class="hint" id="weightHint">(kg)</span>
+              </label>
+              <input id="weight" class="input" inputmode="decimal" placeholder="e.g. 72" required />
+            </div>
           </div>
 
           <p id="error" class="error" role="status" aria-live="polite"></p>
+
+          <div class="formActions">
+            <button id="calcBtn" class="btn" type="submit">Calculate BMI</button>
+            <button id="resetBtn" class="btn btnGhost" type="button">Reset</button>
+          </div>
+
         </form>
       </section>
 
-      <section class="card" id="resultCard" hidden>
-        <div class="result">
-          <div class="resultTop">
-            <div>
-              <div class="resultLabel">Your BMI is</div>
-              <div id="bmiValue" class="bmi">—</div>
-            </div>
+      <!-- Result -->
+      <section class="card reveal" id="resultCard" hidden>
+
+        <div class="resultTop">
+          <div>
+            <div class="resultMeta">Your BMI</div>
+            <div id="bmiValue" class="bmiNum">—</div>
+          </div>
+          <div>
+            <div class="resultMeta">Category</div>
             <div class="pill" id="categoryPill">—</div>
           </div>
+        </div>
 
-          <div class="resultBlock">
-            <div class="resultLabel">Health Advice</div>
-            <pre id="advice" class="advice"></pre>
+        <div class="scaleWrap">
+          <div class="scaleBar">
+            <div class="scaleMark" id="scaleMark"></div>
+          </div>
+          <div class="scaleLabels">
+            <span class="scaleLabelUnder">Underweight</span>
+            <span class="scaleLabelNormal">Normal</span>
+            <span class="scaleLabelOver">Overweight</span>
+            <span class="scaleLabelOb1">Ob. I</span>
+            <span class="scaleLabelOb23">Ob. II+</span>
           </div>
         </div>
+
+        <div class="infoRow">
+          <div class="infoBlock">
+            <div class="infoLabel">Healthy weight for your height</div>
+            <div id="healthyRange" class="infoValue">—</div>
+          </div>
+        </div>
+
+        <div class="adviceBlock">
+          <div class="adviceLabel">Health Advice</div>
+          <p id="advice" class="adviceText"></p>
+        </div>
+
       </section>
 
-      <footer class="footer">
-        <p class="footnote">
-          Tip: Use Tab to move quickly between fields. Press Enter to calculate.
-        </p>
-      </footer>
+      <!-- History -->
+      <section class="card reveal" id="historyCard" hidden>
+        <div class="historyHeader">
+          <span class="historyTitle">Recent Calculations</span>
+          <button id="clearHistoryBtn" class="btnLink" type="button">Clear all</button>
+        </div>
+        <div id="historyList" class="historyList"></div>
+      </section>
+
     </main>
+
+    <footer class="footer">
+      <p>BMI is a screening tool, not a diagnostic measure. Consult a healthcare professional for personalised medical advice.</p>
+    </footer>
 
     <script src="./app.js"></script>
   </body>

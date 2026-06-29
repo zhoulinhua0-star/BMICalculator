@@ -9,8 +9,15 @@ public class BMICalculator {
 
     public static void main(String[] args) {
         BMICalculator calc = new BMICalculator();
-        calc.readUserInput();
-        calc.calculateBMI();
+        boolean runAgain;
+        do {
+            calc.readUserInput();
+            calc.calculateBMI();
+            System.out.print("\nCalculate again? (y/n): ");
+            runAgain = scanner.next().equalsIgnoreCase("y");
+        } while (runAgain);
+        System.out.println("Goodbye!");
+        scanner.close();
     }
     public void readUserInput() {
         System.out.println("------ BMI Calculator ------\n");
@@ -31,10 +38,28 @@ public class BMICalculator {
             bmi = (703 * weight) / Math.pow(height, 2);
         } else {
             System.out.println("Invalid input. Try again!");
+            return;
         }
         System.out.println("\nYour BMI is: " + String.format("%.2f", bmi));
         System.out.println("\nCategory: " + getCategory(bmi));
         System.out.println("\nHealth Advice:\n" + getAdvice(getCategory(bmi)));
+        System.out.println("\nHealthy weight range for your height: " + getHealthyWeightRange(input, height));
+    }
+
+    public String getHealthyWeightRange(int unit, double height) {
+        double minW, maxW;
+        String unitLabel;
+        if (unit == 1) {
+            double hm = height / 100.0;
+            minW = 18.5 * hm * hm;
+            maxW = 24.9 * hm * hm;
+            unitLabel = "kg";
+        } else {
+            minW = 18.5 * height * height / 703.0;
+            maxW = 24.9 * height * height / 703.0;
+            unitLabel = "lbs";
+        }
+        return String.format("%.1f – %.1f %s", minW, maxW, unitLabel);
     }
 
     public String getCategory(double bmi) {
